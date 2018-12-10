@@ -72,12 +72,4 @@ public class PlayerController : MonoBehaviour {
         Instantiate(deathPSPrefab,transform.position + Vector3.back,Quaternion.identity);
         gameObject.SetActive(false);
     }
-
-    public void UnDie() {
-        gameObject.SetActive(true);
-    }
-
-    public void Teleport() {
-
-    }
 }
