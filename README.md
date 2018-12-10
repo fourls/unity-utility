@@ -10,7 +10,6 @@ A transition manager that fades in and out with a customisable set of functions 
 ### [Cutscene](Management/Cutscene.cs)
 A script that triggers `PlayableDirector.Play(<timeline>)` when an object passes within its bounds.
 
----
 ## Interaction
 ### [Interactable](Interaction/Interactable.cs)
 A general class all interactables will inherit from. Contains a `Use(Player player)` function that will be overriden for any specific interaction.
@@ -24,7 +23,6 @@ An [Interactable](Interaction/Interactable.cs) that uses a CinemachineDollyCart 
 ### 3D [Holdable](Interaction/Holdable.cs)
 Used in conjunction with [ItemHoldablePlayer](PlayerControllers/3D/ItemHoldablePlayerController.cs), this inherits from [Interactable](Interaction/Interactable.cs) to make an object that can be held in front of the player.
 
----
 ## Player Control
 
 ### 2D [PlatformerPlayerController](PlayerControllers/2D/PlatformerPlayerController.cs)
@@ -39,8 +37,6 @@ A script that takes mouse input to create a movable first person perspective.
 ### 3D [ItemHoldablePlayer](PlayerControllers/3D/ItemHoldablePlayerController.cs)
 A class inheriting from [StateMachine](Management/StateMachine.cs) that uses [Holdable](Interaction/Holdable.cs) to carry objects in front of the player (usually in conjunction with [FirstPersonPlayerMovement](PlayerControllers/3D/FirstPersonPlayerMovement.cs)).
 
-
----
 ## Misc
 
 ### [CustomCanvasScaler](Misc/CustomCanvasScaler.cs)
@@ -48,5 +44,3 @@ A custom canvas scaler that adapts to the Unity Pixel Perfect Camera.
 
 ### [DynamicCircle](Misc/DynamicCircle.cs)
 A script to display a circle that can vary in size with a fixed border width.
-
----
