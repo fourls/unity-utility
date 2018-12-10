@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlatformerPlayerController : MonoBehaviour {
     [Header("Prefabs")]
     public GameObject deathPSPrefab;
     [Header("References")]
