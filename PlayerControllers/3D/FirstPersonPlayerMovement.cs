@@ -10,8 +10,8 @@ public class FirstPersonPlayerMovement : MonoBehaviour {
 	public float gravity = 9.8f;
 	public float airControl = 0.5f;
 	public float maxVelocityChange = 10f;
-	public bool canJump = true;
 	public float jumpHeight = 2f;
+	public float changeSpeed = 5f;
 	[Header("Grounding")]
 	public LayerMask groundLayer;
 	public Transform groundCheck;
@@ -32,8 +32,6 @@ public class FirstPersonPlayerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if(!GameManager.ins.playing) return;
-
 		bool grounded = IsGrounded();
 
 		if(grounded && collider.material != friction) collider.material = friction;
@@ -43,19 +41,19 @@ public class FirstPersonPlayerMovement : MonoBehaviour {
 		targetVelocity = transform.TransformDirection(targetVelocity);
 		targetVelocity *= speed;
 
-		if(!grounded) targetVelocity *= airControl;
-
 		Vector3 currentVelocity = rb.velocity;
 		Vector3 deltaVelocity = (targetVelocity - currentVelocity);
 		deltaVelocity.y = 0;
+
+		if(!grounded) deltaVelocity *= airControl;
 		
 		if(deltaVelocity.magnitude > maxVelocityChange || deltaVelocity.magnitude < -maxVelocityChange) {
 			deltaVelocity = deltaVelocity.normalized * maxVelocityChange;
 		}
 
-		rb.AddForce(deltaVelocity,ForceMode.VelocityChange);
+		rb.AddForce(deltaVelocity * changeSpeed * Time.deltaTime,ForceMode.VelocityChange);
 
-		if(grounded && canJump && Input.GetButton("Jump")) {
+		if(grounded && Input.GetButton("Jump")) {
 			rb.velocity = new Vector3(currentVelocity.x,GetJumpVelocity(),currentVelocity.z);
 		}
 
