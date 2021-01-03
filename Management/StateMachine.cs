@@ -25,6 +25,10 @@ public class StateMachine<T> {
 		if(currentState != null) currentState.OnStay();
 	}
 
+	public void FixedUpdate() {
+		if(currentState != null) currentState.OnStayFixed();
+	}
+
 }
 
 public class State<T> {
@@ -36,6 +40,10 @@ public class State<T> {
 
 	public virtual void OnStay() {
 
+	}
+
+	public virtual void OnStayFixed() {
+		
 	}
 
 	public virtual void OnExit() {
